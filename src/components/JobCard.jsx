@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { FaLocationCrosshairs } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 
 const JobCard = ({job}) => {
@@ -33,14 +34,16 @@ const JobCard = ({job}) => {
 
       <div className='flex flex-col lg:flex-row justify-between mb-4'>
         <div className='text-orange-700 mb-3 flex gap-1 items-center'>
-        <FaLocationCrosshairs className='text-2xl' />
+        <FaLocationCrosshairs />
          {job.location}
         </div>
-        <button
+       <Link to={`/job/${job.id}`}>
+       <button
           className='h-[36px] bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg text-center text-sm'
         >
           Read More
         </button>
+       </Link>
       </div>
     </div>
   </div>

@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+label{
+    @apply font-semibold text-gray-900 block
+}
+
+
+select{
+    @apply border p-2 rounded-md
+}
+
+.btn{
+    @apply p-2 rounded-md
+}

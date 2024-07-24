@@ -1,30 +1,21 @@
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
 import React from 'react'
 import JobCard from './JobCard'
+import { useJobs } from '../api/apiCall'
 
-const JobLists = () => {
 
-    const {data:jobs,isLoading,error} = useQuery({
-        queryKey: ["jobs"],
-        queryFn: async () => {
-          try {
-            const response = await axios.get("http://localhost:4001/jobs")
-            return response.data
-          } catch (error) {
-            console.log(error);
-          }
-        }
-    })
+const JobLists = ({type,isHome}) => {
+
+    const {data:jobs,isLoading,error} = useJobs(type)
 
     if(isLoading) return <span>loading...</span>
     if(error) return <span>Error fetching data!</span>
 
+    const filterdData = isHome ? jobs.slice(0,3) : jobs
 
   return (
     <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
         {
-           jobs.map(job => (
+           filterdData.map(job => (
             <JobCard key={job.id} job={job} />
            ))
         }

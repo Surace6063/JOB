@@ -35,7 +35,7 @@ const Home = () => {
             {/* job lists */}
             <div>
                 <h1 className='text-3xl text-slate-900 font-bold mb-4'>Newest Jobs</h1>
-                <JobLists />
+                <JobLists isHome={true} />
             </div>
        </Wrapper>
     </div>
